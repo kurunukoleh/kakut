@@ -1,0 +1,13 @@
+body{
+    background : red;
+}
+
+.bl{
+    background : green;
+
+}
+
+.w{
+    background : rgb(255 , 50 ,50);
+    border-radius : 12px;
+}
