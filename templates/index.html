@@ -1,4 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 <p> Вміст сторінки </p>
+
+{% for quiz in quizess %}
+    <h2>{{ quiz[1] }}</h2>
+    <p>{{ quiz[2] }}</p>
+    <a href="#">Перейти</a>
+{% endfor %}
+
+
 {% endblock %}
