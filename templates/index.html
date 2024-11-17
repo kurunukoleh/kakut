@@ -3,9 +3,9 @@
 <p> Вміст сторінки </p>
 
 {% for quiz in quizess %}
-    <h2>{{ quiz[1] }}</h2>
+    <dir class = "qst"><h2>{{ quiz[1] }}</h2>
     <p>{{ quiz[2] }}</p>
-    <a href="#">Перейти</a>
+    <a href="#">Перейти</a></dir>
 {% endfor %}
 
 
