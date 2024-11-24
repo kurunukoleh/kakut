@@ -41,7 +41,7 @@ class DBMmanager:
 
     def addd_option(self , option_id , question_id , content , Is_correct):
         cursor = self.connection.cursor()
-        cursor.execute("INSERT INTO Options(option_id , question_id, content ,Is_correct ) VALUES (? , ? , ?) ", [option_id , question_id , content , Is_correct])
+        cursor.execute("INSERT INTO Options(option_id , question_id, content ,Is_correct ) VALUES (? , ? , ? , ?) ", [option_id , question_id , content , Is_correct])
         self.connection.commit()
         cursor.close()
 
@@ -53,7 +53,6 @@ class DBMmanager:
 
     def get_quises(self):
         cursor = self.connection.cursor()
-
         cursor.execute("SELECT * FROM Quis")
         res = cursor.fetchall()
         cursor.close()
@@ -62,6 +61,13 @@ class DBMmanager:
     def get_question(self , quiz_id):
         cursor = self.connection.cursor()
         cursor.execute("SELECT * FROM Questions WHERE quiz_id = ?" , [quiz_id])
+        res = cursor.fetchall()
+        cursor.close()
+        return res
+
+    def get_options(self , question_id):
+        cursor = self.connection.cursor()
+        cursor.execute("SELECT * FROM Options WHERE question_id = ?" , [question_id])
         res = cursor.fetchall()
         cursor.close()
         return res

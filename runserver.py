@@ -3,6 +3,8 @@ from datamanager import DBMmanager
 
 app = Flask("kakut")
 db_name = "Kakut.db"
+app.secret_key = "1488"
+
 @app.route("/")
 def index():
     db_manager = DBMmanager(db_name)
@@ -12,5 +14,25 @@ def index():
 @app.route("/svaz")
 def svaz():
     return render_template("sviaz.html")
+
+@app.route("/quizz/<int:quizz_id>")
+def get_question(quizz_id):
+    db_manager = DBMmanager(db_name)
+    questions = db_manager.get_question(quizz_id)
+    session["questions"] = questions
+    session["true_ans"] = 0
+    session["quest_index"] = 0
+
+    return redirect(url_for("show_question" , quizz_id=quizz_id))
+
+@app.route("/quizz/<int:quizz_id>/question")
+def show_question(quizz_id):
+    nomer = session["quest_index"]
+    q = session["questions"][nomer]
+    db_manager = DBMmanager(db_name)
+    options = db_manager.get_options(q[0])
+
+    return str(q) + " " + str(options)
+
 
 app.run()
