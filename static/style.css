@@ -16,3 +16,9 @@ body{
     background : rgb(255 , 50 ,50);
     border-radius : 12px;
 }
+
+.questionBlock{
+    background : rgb(255 , 200 ,200);
+    border-radius : 12px;
+    margin : 10px;
+}
