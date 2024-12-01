@@ -34,17 +34,24 @@ def show_question(quizz_id):
 
     return render_template("question.html" , question=q , options=options , quizz_id=quizz_id)
 
-@app.route("/quizz/<int:quizz_id>/answer" , methods=["POST"])
+@app.route("/quizz/<int:quizz_id>/answer" , methods=["POST" , "GET"])
 def answer_func(quizz_id):
     session["quest_index"]+=1
+    selected_value = request.form.get('answer')
 
     if len(session["questions"]) <= session["quest_index"]:
         return redirect(url_for("result" , quizz_id=quizz_id ))
     else:
+        if selected_value == "1":
+            session["true_ans"] += 1
+            print(selected_value)
         return redirect(url_for("show_question" , quizz_id=quizz_id))
+
+
+
 
 @app.route("/quizz/<int:quizz_id>/result")
 def result(quizz_id):
-    return "РЕЗУЛЬТАТ"
+    return render_template("answers.html")
 
 app.run()
