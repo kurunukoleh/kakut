@@ -7,13 +7,13 @@
 
 <form method="post" action="{{ url_for('answer_func' ,quizz_id=quizz_id)}}">
     {% for option in options %}
-    <div class="questionBlock">
+    <div class="questionBlock bg-danger">
         <input id="option_{{loop.index}}" , type="radio" , name="answer" , value="{{ option[3] }}"/>
         <label for="option_{{loop.index}}">{{option[2]}}</label>
     </div>
     {% endfor %}
 
-    <button type="submit">Відповісти</button>
+    <button type="submit" class="btn btn-success">Відповісти</button>
 </form>
 
 {% endblock %}

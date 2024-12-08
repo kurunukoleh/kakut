@@ -48,10 +48,9 @@ def answer_func(quizz_id):
         return redirect(url_for("show_question" , quizz_id=quizz_id))
 
 
-
-
 @app.route("/quizz/<int:quizz_id>/result")
 def result(quizz_id):
-    return render_template("answers.html")
+    qlen = len(session["questions"])
+    return render_template("answers.html" , qlen=qlen)
 
 app.run()

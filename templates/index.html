@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<p> Вміст сторінки </p>
+<h1> Квізи </h1>
 
 {% for quiz in quizess %}
-    <dir class = "qst"><h2>{{ quiz[1] }}</h2>
+    <dir class = "qst bg-danger"><h2>{{ quiz[1] }}</h2>
     <p>{{ quiz[2] }}</p>
-    <a href="/quizz/{{quiz[0]}}">Перейти</a></dir>
+    <a href="/quizz/{{quiz[0]}}" class="btn btn-outline-secondary">Перейти</a>
+    </dir>
 {% endfor %}
 
 
